@@ -4,7 +4,7 @@
     <title>Main Application Entry</title>
     <description>Root markup and component orchestrator</description>
   </metadata>
-
+<eventprocessor>
   <script>
     export default {
       state: {
