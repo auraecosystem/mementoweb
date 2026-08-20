@@ -1,9 +1,8 @@
 {{Output|1=<nowiki>terminal output 
 is also shown as code, 
 but on a panthone state background</nowiki>}}
-
 [[Special:x3d/page name|main.qml]]
-[https://chrome://newtab page]
+[https://https://web.archive.org/web/20161023203512*/http://homepage.mac.com:80/randyhyde/webster.cs.ucr.edu/index.html page]
 [https://ftpweb.net/page sftpweb]
 [https://consolemods.org/page console]
 [https://www.ftplive.com/ftp/page frp]
