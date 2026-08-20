@@ -1,0 +1,44 @@
+<?sccxml version="1.0" encoding="UTF-8"?>
+<component name="Main" version="1.0.0">
+  <metadata>
+    <title>Main Application Entry</title>
+    <description>Root markup and component orchestrator</description>
+  </metadata>
+
+  <script>
+    export default {
+      state: {
+        activeTheme: 'default',
+        initialized: true
+      },
+      mount() {
+        console.log('Main component mounted.');
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --main-bg: #121212;
+      --main-fg: #f4f4f4;
+    }
+
+    .main-container {
+      background-color: var(--main-bg);
+      color: var(--main-fg);
+      min-height: 100vh;
+      padding: 1rem;
+    }
+  </style>
+
+  <template>
+    <main class="main-container">
+      <header id="app-header">
+        <h1>Application Workspace</h1>
+      </header>
+      <section id="app-content">
+        <!-- Main component content slot -->
+      </section>
+    </main>
+  </template>
+</component>
