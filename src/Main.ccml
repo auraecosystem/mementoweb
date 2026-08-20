@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ccxml version="1.0" xmlns="http://www.w3.org/2002/09/ccxml">
+  
+  <!-- Global variables to track call and dialog identifiers -->
+  <var name="inboundCallID" expr="''"/>
+  <var name="activeDialogID" expr="''"/>
+
+  <eventprocessor>
+    
+    <!-- 1. Incoming call arriving on the line -->
+    <transition event="connection.alerting">
+      <assign name="inboundCallID" expr="event$.connectionid"/>
+      <log expr="'Incoming call received from: ' + event$.connection.remote"/>
+      <!-- Answer the call -->
+      <accept connectionid="inboundCallID"/>
+    </transition>
+
+    <!-- 2. Call answered and connected -->
+    <transition event="connection.connected">
+      <log expr="'Call connected. Invoking VoiceXML IVR dialog...'"/>
+      <!-- Hand off media to a VoiceXML dialog application -->
+      <dialogstart src="'http://example.com/ivr/welcome.vxml'" 
+                   connectionid="inboundCallID" 
+                   dialogid="activeDialogID"/>
+    </transition>
+
+    <!-- 3. VoiceXML dialog exits or completes -->
+    <transition event="dialog.exit">
+      <log expr="'VoiceXML dialog finished. Teardown connection.'"/>
+      <disconnect connectionid="inboundCallID"/>
+    </transition>
+
+    <!-- 4. Far-end or local disconnect completed -->
+    <transition event="connection.disconnected">
+      <log expr="'Call disconnected successfully. Terminating CCXML session.'"/>
+      <exit/>
+    </transition>
+
+    <!-- 5. Catch-all error handling -->
+    <transition event="error.*">
+      <log expr="'CCXML Error: ' + event$.description"/>
+      <if cond="inboundCallID != ''">
+        <disconnect connectionid="inboundCallID"/>
+      </if>
+      <exit/>
+    </transition>
+
+  </eventprocessor>
+</ccxml>
