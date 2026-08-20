@@ -1,0 +1,6 @@
+[[Special:x3d/page name|main.qml]]
+{{Input|1=&lt;nowiki&gt;
+qdbus org.kde.NepomukServer /nepomukserver org.kde.NepomukServer.quit
+rm -r ~/.kde/share/apps/nepomuk
+rm -r ~/.kde4/share/apps/nepomuk
+nepomuxserver</nowiki>}}
