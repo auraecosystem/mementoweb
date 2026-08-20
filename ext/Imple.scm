@@ -8,3 +8,4 @@ memcpy:
             ex      de, hl      ; Z80 LDIR requires HL = Source, DE = Target
             ldir                ; Block copy: (HL) -> (DE), inc HL/DE, dec BC until BC=0
             ret
+
