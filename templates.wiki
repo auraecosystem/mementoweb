@@ -1,4 +1,12 @@
+{{Output|1=<nowiki>terminal output 
+is also shown as code, 
+but on a panthone state background</nowiki>}}
+
 [[Special:x3d/page name|main.qml]]
+[https://chrome://newtab page]
+[https://ftpweb.net/page sftpweb]
+[https://consolemods.org/page console]
+[https://www.ftplive.com/ftp/page frp]
 {{Input|1=&lt;nowiki&gt;
 qdbus org.kde.NepomukServer /nepomukserver org.kde.NepomukServer.quit
 rm -r ~/.kde/share/apps/nepomuk
